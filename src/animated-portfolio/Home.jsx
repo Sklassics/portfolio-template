@@ -7,7 +7,6 @@ import Profile from './Profile';
 import RadialMenu from './RadialMenu';
 import Projects from './Projects';
 import ContactPHX9000 from './Contact';
-import RocketIcon from '../components/ui/rocket';
 
 const Home = () => {
   const [rotation, setRotation] = useState(0);
