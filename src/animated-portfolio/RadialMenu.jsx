@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 const menuItems = [
   { label: "HOME", angle: 0, href: "/home" },
   { label: "CONTACT", angle: 72, href: "/contact" },
@@ -9,32 +10,31 @@ const menuItems = [
 ];
 
 const RadialMenu = () => {
-  const radius = 180;
+  const radius = 120; // Reduced for better fit on mobile
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="w-screen h-screen flex items-center justify-center relative overflow-hidden  text-white">
       {/* Toggle Button */}
-      <div className="absolute top-6 right-6 z-50 flex items-center justify-center">
+      <div className="absolute top-4 right-4 z-50 flex items-center justify-center">
         <motion.div
-          className="relative w-[100px] h-[100px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center"
+          className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center"
           animate={{ rotate: [0, 0] }}
           transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
         >
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-[80px] h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-white text-sm font-bold shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all"
+            className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-xs sm:text-sm font-bold shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all"
           >
             {isOpen ? "CLOSE" : "MENU"}
           </button>
         </motion.div>
       </div>
 
-      {/* Radial Menu with Background */}
+      {/* Radial Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Overlay */}
             <motion.div
               className="fixed inset-0 bg-[#0f0f24]/80 backdrop-blur-sm z-10"
               initial={{ opacity: 0 }}
@@ -44,9 +44,8 @@ const RadialMenu = () => {
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Radial Menu */}
             <motion.div
-              className="fixed w-[360px] h-[360px] rounded-full border border-[#a855f7] z-20"
+              className="fixed w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-[#a855f7] z-20"
               style={{ boxShadow: "0 0 200px 50px rgba(128,0,255,0.2)" }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -88,14 +87,14 @@ const RadialMenu = () => {
                     key={item.label}
                     className="absolute"
                     style={{
-                      left: `calc(50% + ${x}px - 50px)`,
-                      top: `calc(50% - ${y}px - 50px)`,
+                      left: `calc(50% + ${x}px - 40px)`,
+                      top: `calc(50% - ${y}px - 40px)`,
                     }}
                   >
-                    <motion.div className="relative w-[100px] h-[100px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center">
+                    <motion.div className="relative w-[80px] h-[80px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center">
                       <a href={item.href}>
                         <motion.div
-                          className="w-[80px] h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-white font-bold text-md shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all"
+                          className="w-[64px] h-[64px] sm:w-[80px] sm:h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-white font-bold text-xs sm:text-md shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all"
                           whileHover={{ scale: 1.1 }}
                           transition={{ type: "spring", stiffness: 300 }}
                           onClick={() => setIsOpen(false)}
@@ -116,13 +115,13 @@ const RadialMenu = () => {
       </AnimatePresence>
 
       {/* Avatar Circle Top Left */}
-      <div className="absolute top-0 left-6 w-48 h-48 rounded-full flex items-center justify-center z-50">
-        <div className="absolute w-20 h-20 rounded-full bg-purple-500 opacity-20 blur-2xl animate-pulse" />
-        <div className="absolute w-20 h-20 rounded-full border-[3px] border-dashed border-purple-400 animate-spin-slow" />
-        <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-black relative z-10">
+      <div className="absolute top-0 left-4 w-32 h-32 sm:w-48 sm:h-48 rounded-full flex items-center justify-center z-50">
+        <div className="absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-purple-500 opacity-20 blur-2xl animate-pulse" />
+        <div className="absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full border-[3px] border-dashed border-purple-400 animate-spin-slow" />
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-black relative z-10">
           <img
-                src="https://images.pexels.com/photos/30569336/pexels-photo-30569336.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="avatar"
+            src="https://images.pexels.com/photos/30569336/pexels-photo-30569336.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="avatar"
             className="w-full h-full object-cover"
           />
         </div>

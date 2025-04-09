@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import DynamicTimestamp from "../components/ui/DynamicTimeStamp";
 
 const AccessScreen = () => {
   return (
@@ -78,8 +79,8 @@ const AccessScreen = () => {
 
       {/* Footer Section */}
       <div className="absolute bottom-4 left-4 text-gray-500 text-xs">ACTIVE</div>
-      <div className="absolute bottom-4 right-4 text-gray-500 text-xs">LOC: 2025-04-03</div>
-    </motion.div>
+      <DynamicTimestamp/>
+      </motion.div>
   </div>
   )
 }

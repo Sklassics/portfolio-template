@@ -7,6 +7,7 @@ import Profile from './Profile';
 import RadialMenu from './RadialMenu';
 import Projects from './Projects';
 import ContactPHX9000 from './Contact';
+import DynamicTimestamp from '../components/ui/DynamicTimeStamp';
 
 const Home = () => {
   const [rotation, setRotation] = useState(0);
@@ -47,43 +48,43 @@ const Home = () => {
 </div>
 
 
-        {/* Center Titles */}
-        <div className="absolute top-30 w-full text-center text-white px-4 ">
-        
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl lg:text-9xl font-bold"
-          >
-            CRAFTING
-          </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="text-5xl md:text-7xl lg:text-9xl font-bold"
-          >
-            DIGITAL
-          </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="text-5xl md:text-7xl lg:text-9xl font-bold text-purple-500 "
-          >
-            EXPERIENCES
-          </motion.h1>
-        </div>
+      {/* Center Titles */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 text-center space-y-1 sm:space-y-4">
+      <motion.h1
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="text-3xl sm:text-7xl md:text-7xl lg:text-9xl font-bold"
+  >
+    CRAFTING
+  </motion.h1>
+  <motion.h1
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.5, duration: 1 }}
+    className="text-3xl sm:text-7xl md:text-7xl lg:text-9xl font-bold"
+  >
+    DIGITAL
+  </motion.h1>
+  <motion.h1
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1, duration: 1 }}
+    className="text-3xl sm:text-7xl md:text-7xl lg:text-9xl font-bold text-purple-500"
+  >
+    EXPERIENCES
+  </motion.h1>
+</div>
 
-        {/* Scroll Down Indicator */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-sm md:text-lg "
-          animate={{ y: [0, -10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <span>SCROLL DOWN</span>
-        </motion.div>
+{/* Scroll Down Indicator */}
+<motion.div
+  className="absolute bottom-6 sm:bottom-0 left-1/2 transform -translate-x-1/2 text-white text-xs sm:text-md md:text-lg"
+  animate={{ y: [0, -10, 0] }}
+  transition={{ repeat: Infinity, duration: 2 }}
+>
+  <span>SCROLL DOWN</span>
+</motion.div>
+
       </div>
       <div id='projects'>
       <Projects />
@@ -150,11 +151,11 @@ const Home = () => {
           </div>
 
           <div className="text-xs text-zinc-600 mt-6">ACTIVE</div>
+          <DynamicTimestamp/>
         </div>
 
-        <div className="text-right text-xs text-zinc-600 mt-2 pr-2">
-          LOC: 2025-04-07
-        </div>
+       
+
       </div>
 
       {/* <MacOSPublicationCard /> */}

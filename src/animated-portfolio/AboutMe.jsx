@@ -1,5 +1,6 @@
 import { BookOpen } from "lucide-react";
 import React, { useState } from "react";
+import DynamicTimestamp from "../components/ui/DynamicTimeStamp";
 
 const timelineData = [
   {
@@ -117,8 +118,8 @@ export default function AboutMe() {
 
           <div className="mt-16 text-xs text-gray-500 flex justify-between">
             <span>ACTIVE</span>
-            <span>LOC: 2025-04-08</span>
-          </div>
+            <DynamicTimestamp/>
+            </div>
         </div>
       </div>
     </div>

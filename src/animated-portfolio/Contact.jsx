@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Mail, Github, Twitter, Linkedin, BookOpen } from "lucide-react";
+import DynamicTimestamp from "../components/ui/DynamicTimeStamp";
 
 const ContactPHX9000 = () => {
   const [active, setActive] = useState(true);
@@ -60,8 +61,8 @@ const ContactPHX9000 = () => {
 
         {/* Footer */}
         <div className="absolute bottom-4 left-4 text-xs text-gray-400">ACTIVE</div>
-        <div className="absolute bottom-4 right-4 text-xs text-gray-400">LOC: 2025-04-08</div>
-      </div>
+        <DynamicTimestamp/>
+        </div>
     </div>
   );
 };
