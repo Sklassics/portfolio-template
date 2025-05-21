@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import getProjects from "./project.jsx";
 
-const CARD_HEIGHT = 700; // px, adjust as needed
+const CARD_HEIGHT = 700; // px, adjust as 
 
 const ProjectSections = () => {
   const [current, setCurrent] = useState(0);
