@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ap.cx/react-fullpage": "^0.3.0",
     "@shadcn/ui": "^0.0.4",
     "@tailwindcss/vite": "^4.1.1",
-    "framer-motion": "^12.6.3",
+    "framer-motion": "^12.12.1",
     "lucide-react": "^0.487.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

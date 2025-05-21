@@ -8,6 +8,9 @@ import RadialMenu from './RadialMenu';
 import Projects from './Projects';
 import ContactPHX9000 from './Contact';
 import DynamicTimestamp from '../components/ui/DynamicTimeStamp';
+import WorkShowcase from "../animated-portfolio/WorkShowcase";
+import ProjectSections from "../animated-portfolio/ProjectSections"
+
 
 const Home = () => {
   const [rotation, setRotation] = useState(0);
@@ -86,12 +89,16 @@ const Home = () => {
 </motion.div>
 
       </div>
-      <div id='projects'>
-      <Projects />
-      </div>
       <div id='profile'> 
       <Profile />
       </div>
+      <div id='work'>
+        <WorkShowcase />
+      </div>
+        {/* <ProjectSections /> */}
+        <div id="projectsections">
+  <ProjectSections />
+</div>
       <div id='about'>
       <AboutMe />
       </div>
@@ -159,9 +166,7 @@ const Home = () => {
       </div>
 
       {/* <MacOSPublicationCard /> */}
-      <div id='contact'>
-      <ContactPHX9000 />
-      </div>
+     
     </>
   );
 };
