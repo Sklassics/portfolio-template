@@ -79,9 +79,9 @@ const WorkShowcase = () => {
 
   // Responsive card sizes (smaller for mobile)
   const getCardWidth = () =>
-    window.innerWidth < 768 ? 180 : window.innerWidth < 1024 ? 300 : CARD_WIDTH;
+    window.innerWidth < 768 ? 180 : window.innerWidth < 1024 ? 500 : CARD_WIDTH;
   const getCardHeight = () =>
-    window.innerWidth < 768 ? 220 : window.innerWidth < 1024 ? 500 : CARD_HEIGHT;
+    window.innerWidth < 768 ? 220 : window.innerWidth < 1024 ? 800 : CARD_HEIGHT;
 
   // Use state to force re-render on resize for responsive sizing
   const [dimensions, setDimensions] = useState({

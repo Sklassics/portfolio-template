@@ -16,7 +16,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
       <div className="border-t border-gray-600 my-6"></div>
       <div className="flex items-center justify-between w-full">
         <span className="text-2xl font-semibold">We learn from you</span>
-        <div className="flex items-center gap-2 whitespace-nowrap">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 whitespace-nowrap">
           <button
             onClick={() => setExpanded((e) => !e)}
             className="text-2xl text-yellow-400 font-bold hover:text-yellow-300"
@@ -27,7 +27,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
           <div className="flex gap-2">
             <button
               onClick={() => setMoreInfo((m) => !m)}
-              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-base font-medium"
+              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-sm sm:text-base font-medium"
             >
               Know More
             </button>
@@ -35,7 +35,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
             href="https://ai-interview-main-17-05-2025.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
-             className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-base font-medium"
+             className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-sm sm:text-base font-medium"
           >
             Explore More
           </a>
@@ -72,7 +72,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
       <div className="border-t border-gray-600 my-6"></div>
       <div className="flex items-center justify-between w-full">
         <span className="text-2xl font-semibold">We drive your comfort</span>
-        <div className="flex items-center gap-2 whitespace-nowrap">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 whitespace-nowrap">
           <button
             onClick={() => setExpanded((e) => !e)}
             className="text-2xl text-yellow-400 font-bold hover:text-yellow-300"
@@ -83,7 +83,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
           <div className="flex gap-2">
             <button
               onClick={() => setMoreInfo((m) => !m)}
-              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-base font-medium"
+              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-sm sm:text-base font-medium"
             >
               Know More
             </button>
@@ -91,7 +91,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
             href="https://hanumancars.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-base font-medium"
+            className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-sm sm:text-base font-medium"
           >
             Explore More
           </a>
@@ -128,8 +128,8 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
       </div>
       <div className="border-t border-gray-600 my-6"></div>
       <div className="flex items-center justify-between w-full">
-        <span className="text-2xl font-semibold">Empowering education, digitally</span>
-        <div className="flex items-center gap-2 whitespace-nowrap">
+        <span className="text-2xl font-semibold">Learn digitally</span>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 whitespace-nowrap">
           <button
             onClick={() => setExpanded((e) => !e)}
             className="text-2xl text-yellow-400 font-bold hover:text-yellow-300"
@@ -140,7 +140,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
           <div className="flex gap-2">
             <button
               onClick={() => setMoreInfo((m) => !m)}
-              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-base font-medium"
+              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-sm sm:text-base font-medium"
             >
               Know More
             </button>
@@ -148,7 +148,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
               href="https://sklassicsacademy.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-base font-medium"
+              className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-sm sm:text-base font-medium"
             >
               Explore More
             </a>
@@ -185,8 +185,8 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
       </div>
       <div className="border-t border-gray-600 my-6"></div>
       <div className="flex items-center justify-between w-full">
-        <span className="text-2xl font-semibold">Learn from anywhere, anytime</span>
-        <div className="flex items-center gap-2 whitespace-nowrap">
+        <span className="text-2xl font-semibold">Learn from anywhere</span>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 whitespace-nowrap">
           <button
             onClick={() => setExpanded((e) => !e)}
             className="text-2xl text-yellow-400 font-bold hover:text-yellow-300"
@@ -197,7 +197,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
           <div className="flex gap-2">
             <button
               onClick={() => setMoreInfo((m) => !m)}
-              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-base font-medium"
+              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-sm sm:text-base font-medium"
             >
               Know More
             </button>
@@ -205,7 +205,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
             href="https://sklassics.com"
             target="_blank"
             rel="noopener noreferrer"
-             className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-base font-medium"
+             className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-sm sm:text-base font-medium"
           >
             Explore More
           </a>
@@ -242,8 +242,8 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
       </div>
       <div className="border-t border-gray-600 my-6"></div>
       <div className="flex items-center justify-between w-full">
-        <span className="text-2xl font-semibold">Personalized tutoring, professional learning</span>
-       <div className="flex items-center gap-2 whitespace-nowrap">
+        <span className="text-2xl font-semibold">Learn by self</span>
+       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 ml-2 sm:gap-4 whitespace-nowrap">
           <button
             onClick={() => setExpanded((e) => !e)}
             className="text-2xl text-yellow-400 font-bold hover:text-yellow-300"
@@ -254,7 +254,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
           <div className="flex gap-2">
             <button
               onClick={() => setMoreInfo((m) => !m)}
-              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-base font-medium"
+              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-sm sm:text-base font-medium"
             >
               Know More
             </button>
@@ -300,7 +300,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
       <div className="border-t border-gray-600 my-6"></div>
       <div className="flex items-center justify-between w-full">
         <span className="text-2xl font-semibold">Fast, secure, and paperless</span>
-        <div className="flex items-center gap-2 whitespace-nowrap">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 whitespace-nowrap">
           <button
             onClick={() => setExpanded((e) => !e)}
             className="text-2xl text-yellow-400 font-bold hover:text-yellow-300"
@@ -311,7 +311,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
           <div className="flex gap-2">
             <button
               onClick={() => setMoreInfo((m) => !m)}
-              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-base font-medium"
+              className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-sm sm:text-base font-medium"
             >
               Know More
             </button>
@@ -319,7 +319,7 @@ const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
             href="https://loan-application-app.netlify.app"
             target="_blank"
             rel="noopener noreferrer"
-          className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-base font-medium"
+          className="border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition text-sm sm:text-base font-medium"
           >
             Explore More
           </a>

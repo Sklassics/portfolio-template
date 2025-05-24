@@ -65,11 +65,11 @@ const AboutCompany = () => {
 
           {/* Company Image or Logo */}
           <div className="flex-1 flex justify-center relative">
-            <div className="rounded-full bg-purple-700 p-2 relative shadow-[0_0_30px_rgba(168,85,247,0.6)]">
+            <div className="rounded-full bg-purple-700 p-4 w-64 h-64 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.6)]">
               <img
                 src="https://sklassics.com/wp-content/uploads/2024/06/Sklassics.png"
                 alt="Sklassics Technologies"
-                className="rounded-full w-80 h-50 "
+                className="w-56 h-56 object-contain rounded-full"
               />
               <div className="absolute bottom-4 right-4 bg-black border border-purple-500 text-xs px-4 py-1 rounded-full text-white flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-green-500"></span>

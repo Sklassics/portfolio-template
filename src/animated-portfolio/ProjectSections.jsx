@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import getProjects from "./project.jsx";
 
-const MOBILE_CARD_HEIGHT = 320; // px
-const MOBILE_MAX_WIDTH = 640; // px
-const CARD_HEIGHT = 500; // desktop
+const MOBILE_CARD_HEIGHT = 360; // increased for button space
+const MOBILE_MAX_WIDTH = 640;
+const CARD_HEIGHT = 500;
 
 const ProjectSections = () => {
   const [current, setCurrent] = useState(0);
@@ -16,14 +16,14 @@ const ProjectSections = () => {
 
   const projects = getProjects(expanded, setExpanded, moreInfo, setMoreInfo);
 
-  // Responsive card height and min width
   const [cardHeight, setCardHeight] = useState(CARD_HEIGHT);
   const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_MAX_WIDTH);
 
   useEffect(() => {
     const handleResize = () => {
-      setCardHeight(window.innerWidth < MOBILE_MAX_WIDTH ? MOBILE_CARD_HEIGHT : CARD_HEIGHT);
-      setIsMobile(window.innerWidth < MOBILE_MAX_WIDTH);
+      const mobile = window.innerWidth < MOBILE_MAX_WIDTH;
+      setCardHeight(mobile ? MOBILE_CARD_HEIGHT : CARD_HEIGHT);
+      setIsMobile(mobile);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -63,17 +63,18 @@ const ProjectSections = () => {
     };
   }, []);
 
-  // --- MOBILE: Stack all cards vertically ---
+  // --- MOBILE VIEW: Vertical stack with scroll ---
   if (isMobile) {
     return (
-      <div className="w-full min-h-screen flex flex-col items-center bg-black px-2 py-6 gap-6">
+      <div className="w-full min-h-screen flex flex-col items-center bg-black px-2 py-6 gap-6 overflow-auto">
         {projects.map((content, i) => (
           <div
             key={i}
-            className="w-full rounded-xl shadow-2xl border border-gray-700 bg-black"
+            className="w-full rounded-xl shadow-2xl border border-gray-700 bg-black overflow-hidden"
             style={{
               minHeight: `${MOBILE_CARD_HEIGHT}px`,
               maxWidth: 480,
+              paddingBottom: "1rem",
             }}
           >
             {content}
@@ -83,7 +84,7 @@ const ProjectSections = () => {
     );
   }
 
-  // --- DESKTOP: Show animated carousel ---
+  // --- DESKTOP VIEW: Animated carousel ---
   return (
     <div
       className="h-screen w-screen flex items-center justify-center bg-black"
@@ -101,7 +102,6 @@ const ProjectSections = () => {
         <AnimatePresence initial={false}>
           {projects.map((content, i) => {
             if (i === current) {
-              // Center card (active)
               return (
                 <motion.div
                   key={i}
@@ -124,8 +124,8 @@ const ProjectSections = () => {
                 </motion.div>
               );
             }
-            // Previous card (above)
-            if (i === current - 1) {
+
+            if (i === current - 1 || i === current + 1) {
               return (
                 <motion.div
                   key={i}
@@ -137,9 +137,9 @@ const ProjectSections = () => {
                     background: "black",
                     opacity: 0.4,
                   }}
-                  initial={{ y: -100, scale: 0.94, opacity: 0.4 }}
-                  animate={{ y: -60, scale: 0.94, opacity: 0.4 }}
-                  exit={{ y: -200, scale: 0.92, opacity: 0 }}
+                  initial={{ y: i < current ? -100 : 200, scale: 0.94, opacity: 0.4 }}
+                  animate={{ y: i < current ? -60 : 60, scale: 0.94, opacity: 0.4 }}
+                  exit={{ y: i < current ? -200 : 300, scale: 0.92, opacity: 0 }}
                   transition={{
                     type: "spring",
                     stiffness: 80,
@@ -150,32 +150,7 @@ const ProjectSections = () => {
                 </motion.div>
               );
             }
-            // Next card (below)
-            if (i === current + 1) {
-              return (
-                <motion.div
-                  key={i}
-                  className="absolute left-0 w-full rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-700"
-                  style={{
-                    height: cardHeight,
-                    zIndex: 5,
-                    pointerEvents: "none",
-                    background: "black",
-                    opacity: 0.4,
-                  }}
-                  initial={{ y: 200, scale: 0.94, opacity: 0.4 }}
-                  animate={{ y: 60, scale: 0.94, opacity: 0.4 }}
-                  exit={{ y: 300, scale: 0.92, opacity: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 18,
-                  }}
-                >
-                  {content}
-                </motion.div>
-              );
-            }
+
             return null;
           })}
         </AnimatePresence>
