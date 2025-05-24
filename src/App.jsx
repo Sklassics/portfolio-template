@@ -4,6 +4,7 @@ import Home from "./animated-portfolio/Home"
 import Projects from "./animated-portfolio/Projects";
 import ProjectSections from "./animated-portfolio/ProjectSections";
 import WorkShowcase from "./animated-portfolio/WorkShowcase";
+import Footer from "./animated-portfolio/Footer";
 import "./index.css";
 
 function App() {
@@ -19,9 +20,10 @@ function App() {
     <Route path='/section' element={<ProjectSections/>}/>
      <Route path='/work' element={<WorkShowcase/>}/>
     
-
+  
     </Routes>
     </Router>
+     <Footer/>
     </>
   )
 }

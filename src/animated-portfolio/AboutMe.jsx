@@ -3,33 +3,34 @@ import React, { useState } from "react";
 import DynamicTimestamp from "../components/ui/DynamicTimeStamp";
 
 const timelineData = [
+
   {
-    year: "NOW",
-    title: "Developer and Founder",
+    year: "2024",
+    title: "Hanuman Car Rental",
     company: "Specbia",
     details:
-      "Leading development and strategy at Specbia, focusing on creating cutting-edge software products and fostering a team of innovative developers.",
+      "A long-drive car rental platform built using the MERN stack. Features include user booking, car filters, admin CMS, and responsive UI. Integrated Firebase for image storage.",
   },
   {
-    year: "2023",
-    title: "Analyst Developer",
-    company: "Argenta",
+    year: "2024",
+    title: "Loan Management System",
+    company: "Specbia",
     details:
-      "Worked on analyzing and developing internal tools to enhance banking operations, including API integration and reporting automation.",
+      "Loan application system with client and admin portals. Built using React, Redux Toolkit, Node.js, and MongoDB. Allows loan tracking, approvals, and status updates.",
   },
   {
-    year: "2022",
-    title: "React Developer",
-    company: "Telenet",
+    year: "2024",
+    title: "LMS – Sklassics Academy",
+    company: "Specbia",
     details:
-      "Key contributor to the SPOT team as a React developer. Concentrated primarily on the Spot application, an immediate tool within the organization. The application caters to a diverse range of stakeholders. Tasked with identifying and rectifying application issues. Engaged in the application’s continuous enhancement, improving usability.",
+      "A learning management system with course and batch management. Built in React with Firebase Firestore, it allows reference links to be added dynamically via CMS and filtered in LMS.",
   },
   {
-    year: "2021",
-    title: "Front-End Developer",
-    company: "VRT",
+    year: "2024",
+    title: "Sklassics Tutor",
+    company: "Specbia",
     details:
-      "Collaborated with design and backend teams to build responsive user interfaces for media streaming applications and internal tools.",
+      "Personalized tutoring platform that connects tutors and students. Features include scheduling, course structure, and profile onboarding built in React with Firebase.",
   },
 ];
 
@@ -61,7 +62,6 @@ export default function AboutMe() {
         <div className="absolute top-12 right-0 w-1 h-20 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
         <div className="absolute top-12 left-0 w-1 h-20 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
 
-
         {/* Timeline Content */}
         <div className="relative z-10 w-full max-w-6xl mx-auto">
           <div className="border border-[#2d2d2d] rounded-md p-4">
@@ -86,7 +86,7 @@ export default function AboutMe() {
                   />
                   <div className="text-3xl font-bold text-white mt-4">{item.year}</div>
                   <button
-                    className="mt-4 bg-fuchsia-700 text-white text-xs px-4 py-1 rounded-full  whitespace-nowrap h-10 hover:bg-fuchsia-600 transition flex items-center gap-1"
+                    className="mt-4 bg-fuchsia-700 text-white text-xs px-4 py-1 rounded-full whitespace-nowrap h-10 hover:bg-fuchsia-600 transition flex items-center gap-1"
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleDetails(index);
@@ -118,10 +118,10 @@ export default function AboutMe() {
 
           <div className="mt-16 text-xs text-gray-500 flex justify-between">
             <span>ACTIVE</span>
-            <DynamicTimestamp/>
-            </div>
+            <DynamicTimestamp />
+          </div>
         </div>
       </div>
     </div>
   );
-}  
+}

@@ -55,7 +55,6 @@ const works = [
 
 const CARD_WIDTH = 580;
 const CARD_HEIGHT = 700;
-const CARD_GAP = 32; // px
 
 const WorkShowcase = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -78,23 +77,50 @@ const WorkShowcase = () => {
   const prevCard = works[currentIndex - 1];
   const nextCard = works[currentIndex + visibleCards];
 
+  // Responsive card sizes (smaller for mobile)
+  const getCardWidth = () =>
+    window.innerWidth < 768 ? 180 : window.innerWidth < 1024 ? 300 : CARD_WIDTH;
+  const getCardHeight = () =>
+    window.innerWidth < 768 ? 220 : window.innerWidth < 1024 ? 500 : CARD_HEIGHT;
+
+  // Use state to force re-render on resize for responsive sizing
+  const [dimensions, setDimensions] = useState({
+    width: getCardWidth(),
+    height: getCardHeight(),
+  });
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: getCardWidth(),
+        height: getCardHeight(),
+      });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // For mobile: show only 1 card, hide peeks, adjust dots
+  const isMobile = window.innerWidth < 768;
+  const cardsToShow = isMobile ? 1 : visibleCards;
+
   return (
-    <div className="relative bg-black p-8 text-white max-w-full mx-auto h-full rounded-xl overflow-hidden">
-      <h2 className="text-3xl font-semibold mb-6">Our Work</h2>
+    <div className="relative bg-black p-4 sm:p-8 text-white max-w-full mx-auto h-full rounded-xl overflow-hidden">
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-center">Our Work</h2>
       <div
-        className="flex items-center justify-center"
+        className={`flex items-center justify-center ${isMobile ? "" : ""}`}
         style={{
-          minHeight: CARD_HEIGHT + 40,
+          minHeight: dimensions.height + 40,
           position: "relative",
         }}
       >
-        {/* Peek previous card */}
-        {prevCard && (
+        {/* Peek previous card (hide on mobile) */}
+        {!isMobile && prevCard && (
           <div
             className="absolute left-0 top-1/2 -translate-y-1/2 opacity-40 scale-90 transition-all duration-300"
             style={{
-              width: CARD_WIDTH * 0.7,
-              height: CARD_HEIGHT * 0.9,
+              width: dimensions.width * 0.7,
+              height: dimensions.height * 0.9,
               zIndex: 5,
               pointerEvents: "none",
               overflow: "hidden",
@@ -111,14 +137,14 @@ const WorkShowcase = () => {
         )}
 
         {/* Main visible cards */}
-        <div className="flex gap-8 z-10">
-          {works.slice(currentIndex, currentIndex + visibleCards).map((work) => (
+        <div className={`flex ${isMobile ? "gap-4" : "gap-8"} z-10`}>
+          {works.slice(currentIndex, currentIndex + cardsToShow).map((work) => (
             <div
               key={work.id}
               className="relative rounded-xl cursor-pointer group flex-shrink-0 border-4 border-purple-700 overflow-hidden transition-all duration-300"
               style={{
-                width: CARD_WIDTH,
-                height: CARD_HEIGHT,
+                width: dimensions.width,
+                height: dimensions.height,
                 background: "#18181b",
                 boxShadow: "0 8px 32px #a78bfa55",
               }}
@@ -130,20 +156,22 @@ const WorkShowcase = () => {
                 draggable={false}
               />
               {/* Hover overlay for hoverText */}
-              <div className="absolute inset-0 bg-purple-300 text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center p-6 text-lg font-semibold text-center">
+              <div className="absolute inset-0 bg-purple-300 text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center 
+                p-2 sm:p-4 md:p-6 
+                text-xs sm:text-base md:text-lg font-semibold text-center leading-tight">
                 {work.hoverText}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Peek next card */}
-        {nextCard && (
+        {/* Peek next card (hide on mobile) */}
+        {!isMobile && nextCard && (
           <div
             className="absolute right-0 top-1/2 -translate-y-1/2 opacity-40 scale-90 transition-all duration-300"
             style={{
-              width: CARD_WIDTH * 0.7,
-              height: CARD_HEIGHT * 0.9,
+              width: dimensions.width * 0.7,
+              height: dimensions.height * 0.9,
               zIndex: 5,
               pointerEvents: "none",
               overflow: "hidden",
@@ -160,12 +188,12 @@ const WorkShowcase = () => {
         )}
       </div>
       {/* Carousel Dots */}
-      <div className="flex justify-center mt-8 gap-2">
-        {Array.from({ length: works.length - visibleCards + 1 }).map((_, idx) => (
+      <div className="flex justify-center mt-6 gap-2">
+        {Array.from({ length: works.length - cardsToShow + 1 }).map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
               idx === currentIndex
                 ? "bg-purple-500 scale-125 shadow"
                 : "bg-gray-600 opacity-50"
@@ -178,16 +206,18 @@ const WorkShowcase = () => {
       <button
         onClick={prev}
         disabled={currentIndex === 0}
-        className="absolute top-1/2 left-2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-80 text-white rounded-full w-10 h-10 flex items-center justify-center disabled:opacity-30 transition"
+        className={`absolute ${isMobile ? "top-1/2 left-2" : "top-1/2 left-2"} -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-80 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center disabled:opacity-30 transition`}
         aria-label="Previous"
+        style={{ fontSize: isMobile ? 18 : 24 }}
       >
         &#10094;
       </button>
       <button
         onClick={next}
-        disabled={currentIndex >= works.length - visibleCards}
-        className="absolute top-1/2 right-2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-80 text-white rounded-full w-10 h-10 flex items-center justify-center disabled:opacity-30 transition"
+        disabled={currentIndex >= works.length - cardsToShow}
+        className={`absolute ${isMobile ? "top-1/2 right-2" : "top-1/2 right-2"} -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-80 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center disabled:opacity-30 transition`}
         aria-label="Next"
+        style={{ fontSize: isMobile ? 18 : 24 }}
       >
         &#10095;
       </button>
