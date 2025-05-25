@@ -67,7 +67,7 @@ const AboutCompany = () => {
           <div className="flex-1 flex justify-center relative">
             <div className="rounded-full bg-purple-700 p-4 w-64 h-64 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.6)]">
               <img
-                src="https://sklassics.com/wp-content/uploads/2024/06/Sklassics.png"
+                src="https://i.ibb.co/v6fp7Syd/transparent-logo.png"
                 alt="Sklassics Technologies"
                 className="w-56 h-56 object-contain rounded-full"
               />

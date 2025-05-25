@@ -58,7 +58,7 @@ const Home = () => {
     transition={{ duration: 1 }}
     className="text-3xl sm:text-7xl md:text-7xl lg:text-9xl font-bold"
   >
-    CRAFTING
+    INSPIRING
   </motion.h1>
   <motion.h1
     initial={{ opacity: 0, y: 50 }}
@@ -74,7 +74,7 @@ const Home = () => {
     transition={{ delay: 1, duration: 1 }}
     className="text-3xl sm:text-7xl md:text-7xl lg:text-9xl font-bold text-purple-500"
   >
-    EXPERIENCES
+    EXCELLENCE
   </motion.h1>
 </div>
 
@@ -95,7 +95,7 @@ const Home = () => {
         <WorkShowcase />
       </div>
         {/* <ProjectSections /> */}
-        <div id="projectsections">
+        <div id="projects">
   <ProjectSections />
 </div>
       <div id='about'>

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import getProjects from "./project.jsx";
 
-const MOBILE_CARD_HEIGHT = 360; // increased for button space
+const MOBILE_CARD_HEIGHT = 360; // height per mobile card
 const MOBILE_MAX_WIDTH = 640;
 const CARD_HEIGHT = 500;
 
@@ -30,6 +30,21 @@ const ProjectSections = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    // Set background color and scroll lock
+    document.body.style.backgroundColor = "black";
+    if (isMobile) {
+      document.body.style.overflow = "auto"; // allow scroll on mobile
+    } else {
+      document.body.style.overflow = "hidden"; // prevent scroll on desktop
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.backgroundColor = "";
+    };
+  }, [isMobile]);
+
   const handleWheel = (e) => {
     e.preventDefault();
     if (e.deltaY > 0) scrollNext();
@@ -56,14 +71,7 @@ const ProjectSections = () => {
     }
   };
 
-  useEffect(() => {
-    document.body.style.backgroundColor = "black";
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
-  }, []);
-
-  // --- MOBILE VIEW: Vertical stack with scroll ---
+  // --- MOBILE VIEW: Scrollable vertical stack ---
   if (isMobile) {
     return (
       <div className="w-full min-h-screen flex flex-col items-center bg-black px-2 py-6 gap-6 overflow-auto">
@@ -84,7 +92,7 @@ const ProjectSections = () => {
     );
   }
 
-  // --- DESKTOP VIEW: Animated carousel ---
+  // --- DESKTOP VIEW: Fixed full-screen carousel ---
   return (
     <div
       className="h-screen w-screen flex items-center justify-center bg-black"

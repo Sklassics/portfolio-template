@@ -2,20 +2,31 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const menuItems = [
-  { label: "HOME", angle: 0, href: "/home" },
-  { label: "CONTACT", angle: 72, href: "/contact" },
-  { label: "GAME", angle: 144, href: "/game" },
+  { label: "HOME", angle: 0, href: "#home" },
+  { label: "PROJECTS", angle: 72, href: "#projects" },
+  { label: "PROFILE", angle: 144, href: "#profile" },
   { label: "ABOUT", angle: 216, href: "#about" },
-  { label: "WORK", angle: 288, href: "#projects" },
+  { label: "WORK", angle: 288, href: "#work" },
 ];
 
 const RadialMenu = () => {
   const radius = 120;
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleClick = (href) => {
+    setIsOpen(false);
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.location.hash = href;
+      }
+    }, 500); // Increased timeout
+  };
+
   return (
-   <div className="fixed top-4 right-4 z-50 text-white">
-      {/* Toggle Button */}
+    <div className="fixed top-4 right-4 z-50 text-white">
       <motion.div
         className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center"
         animate={{ rotate: [0, 0] }}
@@ -29,7 +40,6 @@ const RadialMenu = () => {
         </button>
       </motion.div>
 
-      {/* Radial Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -41,7 +51,6 @@ const RadialMenu = () => {
               transition={{ duration: 0.4 }}
               onClick={() => setIsOpen(false)}
             />
-
             <motion.div
               className="fixed top-8 right-8 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-[#a855f7] z-50"
               style={{ boxShadow: "0 0 200px 50px rgba(128,0,255,0.2)" }}
@@ -50,10 +59,7 @@ const RadialMenu = () => {
               exit={{ opacity: 0, scale: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Spinning Conic Gradient */}
               <div className="absolute inset-0 bg-[conic-gradient(from_0deg,_#a855f7_0deg,_#a855f7_10deg,_transparent_10deg,_transparent_72deg,_#a855f7_72deg,_#a855f7_82deg,_transparent_82deg)] opacity-30 rounded-full animate-spin-slow" />
-
-              {/* Glowing Rings */}
               <div
                 className="absolute inset-0 rounded-full"
                 style={{
@@ -74,7 +80,6 @@ const RadialMenu = () => {
                 />
               </div>
 
-              {/* Menu Items */}
               {menuItems.map((item) => {
                 const angleRad = (item.angle * Math.PI) / 180;
                 const x = radius * Math.cos(angleRad);
@@ -90,22 +95,18 @@ const RadialMenu = () => {
                     }}
                   >
                     <motion.div className="relative w-[80px] h-[80px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center">
-                      <a href={item.href}>
-                        <motion.div
-                          className="w-[64px] h-[64px] sm:w-[80px] sm:h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-white font-bold text-xs sm:text-md shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.label}
-                        </motion.div>
-                      </a>
+                      <motion.div
+                        className="w-[64px] h-[64px] sm:w-[80px] sm:h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-white font-bold text-xs sm:text-md shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all cursor-pointer"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        onClick={() => handleClick(item.href)}
+                      >
+                        {item.label}
+                      </motion.div>
                     </motion.div>
                   </div>
                 );
               })}
-
-              {/* Glow Center */}
               <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(168,85,247,0.25)_0%,_transparent_70%)]" />
             </motion.div>
           </>
