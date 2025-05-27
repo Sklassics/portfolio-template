@@ -10,7 +10,7 @@ import ContactPHX9000 from './Contact';
 import DynamicTimestamp from '../components/ui/DynamicTimeStamp';
 import WorkShowcase from "../animated-portfolio/WorkShowcase";
 import ProjectSections from "../animated-portfolio/ProjectSections";
-import Services from '../animated-portfolio/Services';  
+import Footer from '../animated-portfolio/Footer';
 
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="relative w-full h-screen bg-black overflow-hidden ">
+      <div className="relative w-full min-h-screen bg-black  overflow-hidden ">
         {/* Rotating Globe */}
         <motion.div
   animate={{ rotate: 360 }}
@@ -86,21 +86,23 @@ const Home = () => {
 >
   <span>SCROLL DOWN</span>
 </motion.div>
-
+      <div id="home">
+        </div>
       </div>
-      <div id='profile'> 
+      <div id="profile"> 
       <Profile />
       </div>
-      <div id='work'>
+      <div id="work">
         <WorkShowcase />
       </div>
         {/* <ProjectSections /> */}
         <div id="projects">
   <ProjectSections />
 </div>
-      <div id='about'>
+      <div id="about"> 
       <AboutMe />
       </div>
+    
       {/* Publications Section */}
       <div className="min-h-screen bg-black text-white font-sans px-6 py-10 relative">
         <div className="pt-14 max-w-8xl mx-auto relative rounded-xl bg-gradient-to-br from-black via-zinc-900 to-black p-6 border border-zinc-800 shadow-inner mt-12">
@@ -212,12 +214,12 @@ const Home = () => {
   <div className="text-xs text-zinc-600 mt-6">ACTIVE</div>
   <DynamicTimestamp/>
   </div>
-
+</div>
+<Footer />
        
 
-      </div>
+ 
   
-      {/* <MacOSPublicationCard /> */}
      
     </>
   );

@@ -31,19 +31,12 @@ const ProjectSections = () => {
   }, []);
 
   useEffect(() => {
-    // Set background color and scroll lock
     document.body.style.backgroundColor = "black";
-    if (isMobile) {
-      document.body.style.overflow = "auto"; // allow scroll on mobile
-    } else {
-      document.body.style.overflow = "hidden"; // prevent scroll on desktop
-    }
-
+    // Remove overflow control here!
     return () => {
-      document.body.style.overflow = "auto";
       document.body.style.backgroundColor = "";
     };
-  }, [isMobile]);
+  }, []);
 
   const handleWheel = (e) => {
     e.preventDefault();
@@ -95,7 +88,7 @@ const ProjectSections = () => {
   // --- DESKTOP VIEW: Fixed full-screen carousel ---
   return (
     <div
-      className="h-screen w-screen flex items-center justify-center bg-black"
+      className="min-h-screen w-screen flex items-center justify-center bg-black"
       tabIndex={0}
       onWheel={handleWheel}
       style={{ outline: "none", overflow: "hidden" }}

@@ -12,17 +12,11 @@ const menuItems = [
 const RadialMenu = () => {
   const radius = 120;
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollTarget, setScrollTarget] = useState(null);
 
   const handleClick = (href) => {
     setIsOpen(false);
-    setTimeout(() => {
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        window.location.hash = href;
-      }
-    }, 500); // Increased timeout
+    setScrollTarget(href);
   };
 
   return (
@@ -40,7 +34,17 @@ const RadialMenu = () => {
         </button>
       </motion.div>
 
-      <AnimatePresence>
+      <AnimatePresence
+        onExitComplete={() => {
+          if (scrollTarget) {
+            const el = document.querySelector(scrollTarget);
+            if (el) {
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+            setScrollTarget(null);
+          }
+        }}
+      >
         {isOpen && (
           <>
             <motion.div
