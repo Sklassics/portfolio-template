@@ -19,9 +19,6 @@ function App() {
         <Routes>
           <Route path='/' element={<AccessScreen/>}/>
           <Route path='/home' element={<Home/>}/>
-          <Route path='/projects' element={<Projects/>}/>
-          <Route path='/section' element={<ProjectSections/>}/>
-          <Route path='/work' element={<WorkShowcase/>}/>
           <Route path='/projectdisplay' element={<Display />}/>
         </Routes>
       </Router>

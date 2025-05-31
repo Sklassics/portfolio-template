@@ -2,22 +2,26 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import getProjects from "./project.jsx";
 
-const MOBILE_CARD_HEIGHT = 360; // height per mobile card
+const MOBILE_CARD_HEIGHT = 360;
 const MOBILE_MAX_WIDTH = 640;
 const CARD_HEIGHT = 500;
+const SCROLL_COOLDOWN = 900;
 
 const ProjectSections = () => {
   const [current, setCurrent] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [moreInfo, setMoreInfo] = useState(false);
-  const scrollTimeout = useRef(null);
-
-  const scrollDelay = 400;
-
-  const projects = getProjects(expanded, setExpanded, moreInfo, setMoreInfo);
-
+  const [scrollReleased, setScrollReleased] = useState(false);
   const [cardHeight, setCardHeight] = useState(CARD_HEIGHT);
   const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_MAX_WIDTH);
+  const [active, setActive] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const sectionRef = useRef(null);
+  const lastScrollDirection = useRef(0);
+  const prevActive = useRef(active);
+
+  const projects = getProjects(expanded, setExpanded, moreInfo, setMoreInfo);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,39 +36,96 @@ const ProjectSections = () => {
 
   useEffect(() => {
     document.body.style.backgroundColor = "black";
-    // Remove overflow control here!
     return () => {
       document.body.style.backgroundColor = "";
     };
   }, []);
 
+  useEffect(() => {
+    if (isMobile) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+  useEffect(() => {
+    const preventScroll = (e) => {
+      if (!scrollReleased) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    const blockKeys = (e) => {
+      const keys = ["ArrowUp", "ArrowDown", "Space", "PageUp", "PageDown"];
+      if (!scrollReleased && keys.includes(e.code)) {
+        e.preventDefault();
+        return false;
+      }
+    };
+
+    if (!isMobile && active && !scrollReleased) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+      window.addEventListener("keydown", blockKeys, { passive: false });
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+      window.removeEventListener("keydown", blockKeys);
+    };
+  }, [active, scrollReleased, isMobile]);
+
+  useEffect(() => {
+    const onWheel = (e) => {
+      lastScrollDirection.current = Math.sign(e.deltaY);
+    };
+    window.addEventListener("wheel", onWheel, { passive: true });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
+  useEffect(() => {
+    if (
+      active &&
+      !prevActive.current &&
+      lastScrollDirection.current > 0
+    ) {
+      setScrollReleased(false);
+    }
+    prevActive.current = active;
+  }, [active]);
+
   const handleWheel = (e) => {
-    e.preventDefault();
-    if (e.deltaY > 0) scrollNext();
-    else if (e.deltaY < 0) scrollPrev();
-  };
+    if (!active || scrollReleased || isAnimating) return;
 
-  const scrollNext = () => {
-    if (scrollTimeout.current) return;
-    if (current < projects.length - 1) {
-      setCurrent((prev) => prev + 1);
-      setExpanded(false);
-      setMoreInfo(false);
-      scrollTimeout.current = setTimeout(() => (scrollTimeout.current = null), scrollDelay);
+    const direction = Math.sign(e.deltaY);
+    if (direction === 0) return;
+
+    if (direction > 0) {
+      // Scroll down (scroll-jack)
+      if (current < projects.length - 1) {
+        setIsAnimating(true);
+        setCurrent((prev) => prev + 1);
+        setTimeout(() => setIsAnimating(false), SCROLL_COOLDOWN);
+      }
+
+      if (current === projects.length - 1) {
+        setScrollReleased(true);
+      }
+
+      e.preventDefault(); // Only prevent scroll down
+    } else {
+      // Scroll up — allow default scroll behavior
+      setScrollReleased(true);
     }
   };
 
-  const scrollPrev = () => {
-    if (scrollTimeout.current) return;
-    if (current > 0) {
-      setCurrent((prev) => prev - 1);
-      setExpanded(false);
-      setMoreInfo(false);
-      scrollTimeout.current = setTimeout(() => (scrollTimeout.current = null), scrollDelay);
-    }
-  };
-
-  // --- MOBILE VIEW: Scrollable vertical stack ---
   if (isMobile) {
     return (
       <div className="w-full min-h-screen flex flex-col items-center bg-black px-2 py-6 gap-6 overflow-auto">
@@ -72,11 +133,7 @@ const ProjectSections = () => {
           <div
             key={i}
             className="w-full rounded-xl shadow-2xl border border-gray-700 bg-black overflow-hidden"
-            style={{
-              minHeight: `${MOBILE_CARD_HEIGHT}px`,
-              maxWidth: 480,
-              paddingBottom: "1rem",
-            }}
+            style={{ minHeight: `${MOBILE_CARD_HEIGHT}px`, maxWidth: 480, paddingBottom: "1rem" }}
           >
             {content}
           </div>
@@ -85,13 +142,18 @@ const ProjectSections = () => {
     );
   }
 
-  // --- DESKTOP VIEW: Fixed full-screen carousel ---
   return (
-    <div
-      className="min-h-screen w-screen flex items-center justify-center bg-black"
+    <section
+      ref={sectionRef}
+      className="relative w-full flex items-center justify-center bg-black"
+      style={{
+        minHeight: "100vh",
+        height: "100vh",
+        overflow: scrollReleased ? "auto" : "hidden",
+        position: "relative",
+      }}
       tabIndex={0}
       onWheel={handleWheel}
-      style={{ outline: "none", overflow: "hidden" }}
     >
       <div
         className="relative w-full max-w-6xl"
@@ -107,19 +169,11 @@ const ProjectSections = () => {
                 <motion.div
                   key={i}
                   className="absolute left-0 w-full rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-700"
-                  style={{
-                    height: cardHeight,
-                    zIndex: 10,
-                    background: "black",
-                  }}
+                  style={{ height: cardHeight, zIndex: 10, background: "black" }}
                   initial={{ y: 100, scale: 0.96, opacity: 0 }}
                   animate={{ y: 0, scale: 1, opacity: 1 }}
                   exit={{ y: -100, scale: 0.96, opacity: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 18,
-                  }}
+                  transition={{ type: "tween", duration: 0.8, ease: "easeInOut" }}
                 >
                   {content}
                 </motion.div>
@@ -141,11 +195,7 @@ const ProjectSections = () => {
                   initial={{ y: i < current ? -100 : 200, scale: 0.94, opacity: 0.4 }}
                   animate={{ y: i < current ? -60 : 60, scale: 0.94, opacity: 0.4 }}
                   exit={{ y: i < current ? -200 : 300, scale: 0.92, opacity: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 18,
-                  }}
+                  transition={{ type: "tween", duration: 0.8, ease: "easeInOut" }}
                 >
                   {content}
                 </motion.div>
@@ -156,7 +206,7 @@ const ProjectSections = () => {
           })}
         </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 };
 

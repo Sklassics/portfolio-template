@@ -3,12 +3,12 @@ import React, { useState } from "react";
 const works = [
   {
     id: 1,
-    image: "https://framerusercontent.com/images/asbFQVxKZOyOyzsbydvhFHVWrjg.png?scale-down-to=1024",
+    image: "https://media.licdn.com/dms/image/v2/D4D12AQHNZcLIb10_LQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1715255563562?e=2147483647&v=beta&t=wF_BP--MC_hm81u2eNeYCIvGIhyUFFSi_VuReD1oPVk",
     hoverText: "AI Interview Panel uses NLP and machine learning to evaluate answers, provide insights, and mimic human-like interviews across various domains.",
   },
   {
     id: 2,
-    image: "https://framerusercontent.com/images/uBTKikQd6jztlXjol4cQ4jMQzz8.png?scale-down-to=1024",
+    image: "https://images.pexels.com/photos/3457780/pexels-photo-3457780.jpeg?auto=compress&cs=tinysrgb&w=600",
     hoverText: "Hanuman Car Rental is a full-fledged car booking solution that streamlines both customer and admin experiences.",
   },
   {

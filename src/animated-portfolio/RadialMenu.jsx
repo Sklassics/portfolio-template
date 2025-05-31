@@ -12,15 +12,28 @@ const menuItems = [
 const RadialMenu = () => {
   const radius = 120;
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollTarget, setScrollTarget] = useState(null);
 
-  const handleClick = (href) => {
+  const handleClick = (href, e) => {
+    e.preventDefault();
     setIsOpen(false);
-    setScrollTarget(href);
+
+    setTimeout(() => {
+      const id = href.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        // Adjust this value if you have a fixed header
+        const yOffset = -40; // px
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      } else {
+        window.location.hash = href;
+      }
+    }, 200);
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 text-white">
+    <div className="fixed top-4 right-4 z-[100] text-white">
+      {/* Menu button */}
       <motion.div
         className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center"
         animate={{ rotate: [0, 0] }}
@@ -34,29 +47,23 @@ const RadialMenu = () => {
         </button>
       </motion.div>
 
-      <AnimatePresence
-        onExitComplete={() => {
-          if (scrollTarget) {
-            const el = document.querySelector(scrollTarget);
-            if (el) {
-              el.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-            setScrollTarget(null);
-          }
-        }}
-      >
+      {/* Menu Items and Overlay */}
+      <AnimatePresence>
         {isOpen && (
           <>
+            {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-[#0f0f24]/80 backdrop-blur-sm z-40"
+              className="fixed inset-0 bg-[#0f0f24]/80 backdrop-blur-sm z-[40]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
               onClick={() => setIsOpen(false)}
             />
+
+            {/* Radial Menu Circle */}
             <motion.div
-              className="fixed top-8 right-8 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-[#a855f7] z-50"
+              className="fixed top-8 right-8 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-[#a855f7] z-[50] pointer-events-none"
               style={{ boxShadow: "0 0 200px 50px rgba(128,0,255,0.2)" }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -84,6 +91,7 @@ const RadialMenu = () => {
                 />
               </div>
 
+              {/* Menu Items */}
               {menuItems.map((item) => {
                 const angleRad = (item.angle * Math.PI) / 180;
                 const x = radius * Math.cos(angleRad);
@@ -92,26 +100,29 @@ const RadialMenu = () => {
                 return (
                   <div
                     key={item.label}
-                    className="absolute"
+                    className="absolute z-[60]"
                     style={{
                       left: `calc(50% + ${x}px - 40px)`,
                       top: `calc(50% - ${y}px - 40px)`,
                     }}
                   >
                     <motion.div className="relative w-[80px] h-[80px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center">
-                      <motion.div
-                        className="w-[64px] h-[64px] sm:w-[80px] sm:h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-white font-bold text-xs sm:text-md shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all cursor-pointer"
+                      <motion.a
+                        href={item.href}
+                        className="w-[64px] h-[64px] sm:w-[80px] sm:h-[80px] rounded-full border border-[#a855f7] bg-[#2a0a4f]/70 text-white font-bold text-xs sm:text-md shadow-[0_0_60px_rgba(168,85,247,0.4)] backdrop-blur-sm flex items-center justify-center hover:scale-105 transition-all cursor-pointer z-[70]"
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
-                        onClick={() => handleClick(item.href)}
+                        onClick={(e) => handleClick(item.href, e)}
+                        tabIndex={isOpen ? 0 : -1}
+                        aria-label={item.label}
                       >
                         {item.label}
-                      </motion.div>
+                      </motion.a>
                     </motion.div>
                   </div>
                 );
               })}
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(168,85,247,0.25)_0%,_transparent_70%)]" />
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(168,85,247,0.25)_0%,_transparent_70%)] pointer-events-none" />
             </motion.div>
           </>
         )}
