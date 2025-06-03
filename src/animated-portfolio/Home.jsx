@@ -187,7 +187,7 @@ const Home = () => {
             transition={{ duration: 1 }}
             className="text-3xl sm:text-7xl md:text-7xl lg:text-9xl font-bold"
           >
-            INSPIRING
+            ACCELARATING
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
@@ -203,7 +203,7 @@ const Home = () => {
             transition={{ delay: 1, duration: 1 }}
             className="text-3xl sm:text-7xl md:text-7xl lg:text-9xl font-bold text-purple-500"
           >
-            EXCELLENCE
+            GROWTH
           </motion.h1>
         </div>
 

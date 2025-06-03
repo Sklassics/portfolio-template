@@ -1,6 +1,6 @@
 import React from "react";
 import DynamicTimestamp from "../components/ui/DynamicTimeStamp";
-
+import logo1 from "../assets/logo1.png"; // Adjust the path as necessary
 const AboutCompany = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans px-6 py-10 relative">
@@ -35,7 +35,7 @@ const AboutCompany = () => {
               <h2 className="text-purple-500 text-sm tracking-widest">ABOUT US</h2>
               <h1 className="text-4xl md:text-5xl font-bold text-white" style={{ textShadow: "0 0 8px rgba(128,0,255,0.5)" }}>
                 <span className="text-purple-500">We Are</span> <br />
-                Sklassics Technologies Pvt.Ltd
+                Sklassics Technologies Private Limited
               </h1>
             </div>
 
@@ -43,31 +43,40 @@ const AboutCompany = () => {
               <div>
                 <h3 className="text-purple-500 font-semibold">WHO WE ARE</h3>
                 <p>
-                  At Sklassics, we are passionate innovators providing cutting-edge digital solutions. We specialize in delivering scalable, efficient, and modern technology tailored to empower your business.
-                </p>
+At      <span className="text-white font-bold">Sklassics</span>, we are passionate technology enablers committed to shaping the future through 
+IT. We specialize in offering <span className="text-white font-bold">industry relevant IT training,</span> placement support, and <span className="text-white font-bold">custom 
+digital solutions</span> that drive business and career growth. From startups to students, we 
+empower every journey with innovation and impact.                </p>
               </div>
 
               <div>
                 <h3 className="text-purple-500 font-semibold">OUR SERVICES</h3>
                 <p>
-                  We offer full-stack web development, mobile app solutions, AI integration, and cloud-based technologies to help companies grow with confidence in a digital-first world.
-                </p>
+We provide a comprehensive suite of offerings including: <br />
+● Professional <span className="text-white font-bold"> IT Training & Job Placements </span><br />
+● Custom <span className="text-white font-bold">Web & Mobile App Development </span><br />
+● <span className="text-white font-bold">AI & Cloud Integration Solutions </span><br />
+● <span className="text-white font-bold">Travel Agency Services</span> with tech-enabled tools <br />
+● <span className="text-white font-bold">Workshop & Seminar Programs</span> in Colleges and Universities <br />
+● And many more tailored IT services for businesses and individuals                </p>
               </div>
 
               <div>
                 <h3 className="text-purple-500 font-semibold">OUR MISSION</h3>
                 <p>
-                  <span className="text-white font-bold">Driven by innovation</span>, our mission is to transform ideas into impactful digital realities by combining creativity, expertise, and customer-centric values.
+              mission is to <span className="text-white font-bold"> bridge the gap between talent and technology</span> by delivering value-driven 
+solutions. We aim to transform lives and businesses through <span className="text-white font-bold">  quality education, digital 
+innovation,</span> and <span className="text-white font-bold"> community engagement</span>, creating a future where technology uplifts everyone. 
                 </p>
               </div>
             </div>
           </div>
 
           {/* Company Image or Logo */}
-          <div className="flex-1 flex justify-center relative">
-            <div className="rounded-full bg-purple-700 p-4 w-64 h-64 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.6)]">
+          <div className="flex-1 flex justify-center  relative">
+            <div className="rounded-full  bg-white p-4 w-64 h-64 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.6)]">
               <img
-                src="https://i.ibb.co/v6fp7Syd/transparent-logo.png"
+                src={logo1}
                 alt="Sklassics Technologies"
                 className="w-56 h-56 object-contain rounded-full"
               />

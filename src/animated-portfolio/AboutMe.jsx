@@ -4,34 +4,69 @@ import DynamicTimestamp from "../components/ui/DynamicTimeStamp";
 import { useNavigate } from "react-router-dom";
 
 const timelineData = [
-	{
-		year: "2024",
-		title: "Hanuman Car Rental",
-		company: "Specbia",
-		details:
-			"A long-drive car rental platform built using the MERN stack. Features include user booking, car filters, admin CMS, and responsive UI. Integrated Firebase for image storage.",
-	},
-	{
-		year: "2024",
-		title: "Loan Management System",
-		company: "Specbia",
-		details:
-			"Loan application system with client and admin portals. Built using React, Redux Toolkit, Node.js, and MongoDB. Allows loan tracking, approvals, and status updates.",
-	},
-	{
-		year: "2024",
-		title: "LMS – Sklassics Academy",
-		company: "Specbia",
-		details:
-			"A learning management system with course and batch management. Built in React with Firebase Firestore, it allows reference links to be added dynamically via CMS and filtered in LMS.",
-	},
-	{
-		year: "2024",
-		title: "Sklassics Tutor",
-		company: "Specbia",
-		details:
-			"Personalized tutoring platform that connects tutors and students. Features include scheduling, course structure, and profile onboarding built in React with Firebase.",
-	},
+    {
+        year: "2024",
+        title: "IT Training and Placements",
+        company: "Sklassics",
+        details:
+            "Industry-relevant IT training programs with placement support for students and professionals. Includes hands-on courses, interview prep, and career guidance.",
+    },
+    {
+        year: "2024",
+        title: "IT Services",
+        company: "Sklassics Tech",
+        details:
+            "Custom web, mobile, AI, and cloud solutions for businesses of all sizes. Delivered using modern stacks and agile methodologies.",
+    },
+    {
+        year: "2024",
+        title: "Online and Offline Tutoring Services",
+        company: "Sklassics Tutor",
+        details:
+            "Flexible tutoring for students—live, batch-based, and self-paced learning options. Connects students with expert tutors for all subjects.",
+    },
+    {
+        year: "2024",
+        title: "AI Interview Mock Applications",
+        company: "Sklassics AI",
+        details:
+            "Practice interviews with AI-driven feedback and real-world scenarios. Helps candidates prepare for technical and HR rounds.",
+    },
+    {
+        year: "2024",
+        title: "LMS Application Services",
+        company: "Sklassics Academy",
+        details:
+            "Modern learning management system for schools, colleges, and corporates. Features batch management, dynamic content, and progress tracking.",
+    },
+    {
+        year: "2024",
+        title: "Quiz Application Services",
+        company: "Sklassics Quiz",
+        details:
+            "Interactive quiz platforms for education, recruitment, and events. Supports custom quizzes, analytics, and real-time scoring.",
+    },
+    {
+        year: "2024",
+        title: "Travelling Services",
+        company: "Hanuman Car Rental",
+        details:
+            "Reliable car rental and travel solutions for individuals and businesses. Features online booking, car filters, and 24x7 support.",
+    },
+    {
+        year: "2024",
+        title: "Loan Application Services",
+        company: "Sklassics Loan",
+        details:
+            "Secure, automated loan application and management platform for customers and admins. Includes tracking, approvals, and status updates.",
+    },
+    {
+        year: "2024",
+        title: "Real Estate Services",
+        company: "Sklassics Realty",
+        details:
+            "Comprehensive real estate solutions for buying, selling, and renting properties. Digital listings, virtual tours, and agent support.",
+    },
 ];
 
 export default function AboutMe() {
@@ -100,7 +135,7 @@ export default function AboutMe() {
 										{item.title}
 									</h3>
 									<button
-										className="bg-purple-700 hover:bg-purple-600 transition text-white text-xs px-4 py-1 rounded-full flex items-center gap-1"
+										className="bg-purple-700 hover:bg-purple-600 transition text-white text-xs px-4 py-3  rounded-full flex items-center gap-1"
 										onClick={(e) => {
 											e.stopPropagation();
 											navigate("/projectdisplay");

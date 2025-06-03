@@ -16,7 +16,7 @@ const AccessScreen = () => {
     >
       {/* Header Section */}
       <div className="flex justify-between items-center text-gray-400 text-xs border-b border-gray-700 pb-2">
-        <span className="text-purple-400">• PIETER HERMAN</span>
+  <img src="https://sklassics.com/wp-content/uploads/2024/06/Sklassics.png" alt="Logo" className="h-6 w-auto" />
         <span className="text-gray-500">
           INITIATE <span className="text-gray-300">PHX9000</span>
         </span>
@@ -63,7 +63,7 @@ const AccessScreen = () => {
         transition={{ duration: 1, delay: 0.8 }}
         className="text-gray-500 text-center mt-10 text-sm"
       >
-        or choose
+      
       </motion.p>
 
       <motion.button
@@ -73,8 +73,7 @@ const AccessScreen = () => {
         whileHover={{ scale: 1.05, textShadow: "0px 0px 8px rgba(0, 162, 255, 0.6)" }}
         className="mt-3 flex items-center justify-center mx-auto space-x-2 text-blue-400 hover:text-blue-500 transition tracking-widest"
       >
-        <span className="text-lg">🔇</span>
-        <span>S I L E N T  M O D E</span>
+        <span> Sklassics Technologies Private Limited</span>
       </motion.button>
 
       {/* Footer Section */}

@@ -77,11 +77,11 @@ const WorkShowcase = () => {
   const prevCard = works[currentIndex - 1];
   const nextCard = works[currentIndex + visibleCards];
 
-  // Responsive card sizes (smaller for mobile)
+  // Responsive card sizes (now fills most of the viewport, with padding)
   const getCardWidth = () =>
-    window.innerWidth < 768 ? 180 : window.innerWidth < 1024 ? 500 : CARD_WIDTH;
+    Math.min(window.innerWidth - 32, 480); // 32px padding, max 480px
   const getCardHeight = () =>
-    window.innerWidth < 768 ? 220 : window.innerWidth < 1024 ? 800 : CARD_HEIGHT;
+    Math.min(window.innerHeight - 120, 600); // 120px padding/top space, max 600px
 
   // Use state to force re-render on resize for responsive sizing
   const [dimensions, setDimensions] = useState({
