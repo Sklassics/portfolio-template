@@ -9,6 +9,7 @@ import DynamicTimestamp from '../components/ui/DynamicTimeStamp';
 import WorkShowcase from "../animated-portfolio/WorkShowcase";
 import ProjectSections from "../animated-portfolio/ProjectSections";
 import Footer from '../animated-portfolio/Footer';
+import StickyScrollCards from './StickyScollCards';
 
 // --- RadialMenu component directly in this file ---
 const menuItems = [
@@ -225,12 +226,13 @@ const Home = () => {
       </div>
 
       <div id="projects" className="scroll-mt-80">
-        <ProjectSections />
+        <StickyScrollCards />
       </div>
 
       <div id="about" className="scroll-mt-20">
         <AboutMe />
       </div>
+
    
 
       {/* Publications Section */}

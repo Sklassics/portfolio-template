@@ -1,141 +1,60 @@
-import React from "react";
-
-const getProjects = (expanded, setExpanded, moreInfo, setMoreInfo) => [
-  // IT Training and Placements 2024
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p1">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">IT Training and Placements 2024</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Industry-relevant IT training programs with placement support for students and professionals.
-    </p>
-    <a
-      href="https://sklassics.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Sklassics.com
-    </a>
-  </div>,
-
-  // IT Services 2024
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p2">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">IT Services 2024</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Custom web, mobile, AI, and cloud solutions for businesses of all sizes.
-    </p>
-    <a
-      href="https://sklassicstech.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Sklassicstech.com
-    </a>
-  </div>,
-
-  // Online and Offline Tutoring Services
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p3">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">Online and Offline Tutoring Services</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Flexible tutoring for students—live, batch-based, and self-paced learning options.
-    </p>
-    <a
-      href="https://sklassicstutor.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Sklassicstutor.com
-    </a>
-  </div>,
-
-  // AI Interview Mock Applications
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p4">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">AI Interview Mock Applications</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Practice interviews with AI-driven feedback and real-world scenarios.
-    </p>
-    <a
-      href="https://sklassics-ai.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Sklassics-ai.com
-    </a>
-  </div>,
-
-  // LMS Application Services
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p5">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">LMS Application Services</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Modern learning management systems for schools, colleges, and corporates.
-    </p>
-    <a
-      href="https://sklassics-lms.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Sklassics-lms.com
-    </a>
-  </div>,
-
-  // Quiz Application Services
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p6">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">Quiz Application Services</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Interactive quiz platforms for education, recruitment, and events.
-    </p>
-    <a
-      href="https://sklassics-quiz.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Sklassics-quiz.com
-    </a>
-  </div>,
-
-  // Travelling Services
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p7">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">Travelling Services</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Reliable car rental and travel solutions for individuals and businesses.
-    </p>
-    <a
-      href="https://hanumancars.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Hanumancars.com
-    </a>
-  </div>,
-
-  // Loan Application Services
-  <div className="w-full h-full min-h-screen flex flex-col justify-center items-center p-0 m-0" key="p8">
-    <h1 className="text-4xl md:text-5xl font-black mb-6 text-center">Loan Application Services</h1>
-    <p className="text-xl mb-8 leading-relaxed text-center max-w-2xl">
-      Secure, automated loan application and management platform for customers and admins.
-    </p>
-    <a
-      href="https://sklassics-loan.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition text-lg font-semibold"
-      style={{ minWidth: 220, textAlign: "center" }}
-    >
-      Explore Sklassics-loan.com
-    </a>
-  </div>,
+const projects = [
+  {
+    key: "p1",
+    title: "IT Training and Placements 2024",
+    description: "Industry-relevant IT training programs with placement support for students and professionals.",
+    link: "https://sklassics.com",
+    linkText: "Explore Sklassics.com",
+  },
+  {
+    key: "p2",
+    title: "IT Services 2024",
+    description: "Custom web, mobile, AI, and cloud solutions for businesses of all sizes.",
+    link: "https://sklassicstech.com",
+    linkText: "Explore Sklassicstech.com",
+  },
+  {
+    key: "p3",
+    title: "Online and Offline Tutoring Services",
+    description: "Flexible tutoring for students—live, batch-based, and self-paced learning options.",
+    link: "https://sklassicstutor.com",
+    linkText: "Explore Sklassicstutor.com",
+  },
+  {
+    key: "p4",
+    title: "AI Interview Mock Applications",
+    description: "Practice interviews with AI-driven feedback and real-world scenarios.",
+    link: "https://sklassics-ai.com",
+    linkText: "Explore Sklassics-ai.com",
+  },
+  {
+    key: "p5",
+    title: "LMS Application Services",
+    description: "Modern learning management systems for schools, colleges, and corporates.",
+    link: "https://sklassics-lms.com",
+    linkText: "Explore Sklassics-lms.com",
+  },
+  {
+    key: "p6",
+    title: "Quiz Application Services",
+    description: "Interactive quiz platforms for education, recruitment, and events.",
+    link: "https://sklassics-quiz.com",
+    linkText: "Explore Sklassics-quiz.com",
+  },
+  {
+    key: "p7",
+    title: "Travelling Services",
+    description: "Reliable car rental and travel solutions for individuals and businesses.",
+    link: "https://hanumancars.com",
+    linkText: "Explore Hanumancars.com",
+  },
+  {
+    key: "p8",
+    title: "Loan Application Services",
+    description: "Secure, automated loan application and management platform for customers and admins.",
+    link: "https://sklassics-loan.com",
+    linkText: "Explore Sklassics-loan.com",
+  },
 ];
 
-export default getProjects;
+export default projects;
