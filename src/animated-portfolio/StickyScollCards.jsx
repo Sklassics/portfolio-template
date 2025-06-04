@@ -86,7 +86,7 @@ const StickyScrollCards = () => {
   if (isMobile) {
     // MOBILE: Normal vertical scroll
     return (
-      <div className="bg-[#2E3537] min-h-screen p-4 space-y-6">
+      <div className=" bg-black min-h-screen p-4 space-y-6">
         {projects.map((project) => (
           <div
             key={project.key}
@@ -130,7 +130,7 @@ const StickyScrollCards = () => {
           return (
             <li
               key={project.key}
-              className="sticky top-0"
+              className="sticky top-0 bg-black"
               style={{
                 paddingTop: `${(index + 1) * CARD_TOP_PADDING}em`,
                 zIndex: index + 1, // <-- This makes each next card appear in front
