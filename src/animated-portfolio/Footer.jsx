@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-12 animate-fadeInUp">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 animate-fadeInUp">
         {/* Services Section */}
         <section>
           <h4 className="text-violet-600 text-sm font-semibold mb-4">OUR SERVICES</h4>
@@ -48,25 +48,11 @@ const Footer = () => {
         </section>
 
         {/* Contact Info */}
-        <address>
-          <h4 className="text-violet-600 text-sm font-semibold mb-4">GET IN TOUCH</h4>
-          <ul className="text-slate-400 text-sm space-y-2 not-italic">
-            <li>0121 651 1235</li>
-            <li>apply@mitchelladam.co.uk</li>
-            <li>hire@mitchelladam.co.uk</li>
-            <li>LinkedIn</li>
-            <li>Mitchell Adam</li>
-            <li>
-              Alpha Tower<br />
-              Suffolk Street Queensway<br />
-              Birmingham B1 1TT
-            </li>
-          </ul>
-        </address>
+       
 
         {/* CTA Cards + Icon */}
-        <div className="flex flex-col gap-6">
-          <div className="border border-white rounded-2xl p-6 hover:transform hover:scale-[1.03] hover:-translate-x-3 hover:translate-y-3 hover:shadow-[0_0_0_0_#ffe066] transition-all">
+        <div className="flex flex-col gap-6 ">
+          <div className="border border-white rounded-2xl p-6 hover:transform hover:scale-[1.03] hover:-translate-x-3 hover:translate-y-3 hover:shadow-[0_0_0_0_#ffe066] transition-all ">
             <h3 className="mb-2 text-lg font-semibold">I want to apply</h3>
             <p className="text-slate-400 text-sm">Find your next finance role</p>
           </div>

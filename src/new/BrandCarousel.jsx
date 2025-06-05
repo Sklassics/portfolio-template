@@ -1,104 +1,16 @@
 import React from "react";
 
-// Example SVG logos (replace with your own or use <img src="..." />)
+// Replace brands with your links
 const brands = [
-	{
-		name: "Amazon",
-		svg: (
-			<svg viewBox="0 0 80 24" className="h-8">
-				<text
-					x="0"
-					y="18"
-					fontFamily="Arial Black"
-					fontSize="20"
-					fill="white"
-				>
-					amazon
-				</text>
-			</svg>
-		),
-	},
-	{
-		name: "Facebook",
-		svg: (
-			<svg viewBox="0 0 100 24" className="h-8">
-				<text
-					x="0"
-					y="18"
-					fontFamily="Arial Black"
-					fontSize="20"
-					fill="white"
-				>
-					facebook
-				</text>
-			</svg>
-		),
-	},
-	{
-		name: "Tinder",
-		svg: (
-			<svg viewBox="0 0 80 24" className="h-8">
-				<text
-					x="0"
-					y="18"
-					fontFamily="Arial Black"
-					fontSize="20"
-					fill="white"
-				>
-					tinder
-				</text>
-			</svg>
-		),
-	},
-	{
-		name: "Airbnb",
-		svg: (
-			<svg viewBox="0 0 90 24" className="h-8">
-				<text
-					x="0"
-					y="18"
-					fontFamily="Arial Black"
-					fontSize="20"
-					fill="white"
-				>
-					airbnb
-				</text>
-			</svg>
-		),
-	},
-	{
-		name: "Cadbury",
-		svg: (
-			<svg viewBox="0 0 100 24" className="h-8">
-				<text
-					x="0"
-					y="18"
-					fontFamily="Brush Script MT"
-					fontSize="20"
-					fill="white"
-				>
-					Cadbury
-				</text>
-			</svg>
-		),
-	},
-	{
-		name: "Canon",
-		svg: (
-			<svg viewBox="0 0 80 24" className="h-8">
-				<text
-					x="0"
-					y="18"
-					fontFamily="Arial Black"
-					fontSize="20"
-					fill="white"
-				>
-					Canon
-				</text>
-			</svg>
-		),
-	},
-	// Add more as needed
+	{ name: "sklassics.com", url: "https://sklassics.com" },
+	{ name: "sklassicstech.com", url: "https://sklassicstech.com" },
+	{ name: "sklassicsacademy.com", url: "https://sklassicsacademy.com" },
+	{ name: "sklassics-lms.com", url: "https://sklassics-lms.com" },
+	{ name: "sklassics-ai.com", url: "https://sklassics-ai.com" },
+	{ name: "sklassicstutor.com", url: "https://sklassicstutor.com" },
+	{ name: "sklassics-quiz.com", url: "https://sklassics-quiz.com" },
+	{ name: "hanumancars.com", url: "https://hanumancars.com" },
+	{ name: "vlrws.com", url: "https://vlrws.com" },
 ];
 
 export default function BrandCarousel() {
@@ -110,13 +22,23 @@ export default function BrandCarousel() {
 			<div className="w-full overflow-x-hidden">
 				<div className="flex gap-8 sm:gap-12 animate-scroll-x whitespace-nowrap min-w-[200%]">
 					{[...brands, ...brands].map((brand, i) => (
-						<div
+						<a
 							key={i}
+							href={brand.url}
+							target="_blank"
+							rel="noopener noreferrer"
 							className="flex-shrink-0 flex items-center justify-center opacity-80 hover:opacity-100 transition px-4"
-							style={{ minWidth: 100, height: 64 }}
+							style={{
+								minWidth: 180,
+								height: 64,
+								color: "white",
+								fontWeight: 700,
+								fontSize: 22,
+								letterSpacing: 1,
+							}}
 						>
-							{brand.svg}
-						</div>
+							{brand.name}
+						</a>
 					))}
 				</div>
 			</div>

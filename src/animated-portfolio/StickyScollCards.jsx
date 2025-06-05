@@ -117,7 +117,7 @@ const StickyScrollCards = () => {
       style={{ minHeight: "100vh", fontFamily: "Arial, sans-serif" }}
     >
       <ul
-        className="list-none grid grid-cols-1"
+        className="list-none bg-black grid grid-cols-1"
         style={{
           gridTemplateRows: `repeat(${projects.length}, ${CARD_HEIGHT}vh)`,
           gap: "4vw",
@@ -130,7 +130,7 @@ const StickyScrollCards = () => {
           return (
             <li
               key={project.key}
-              className="sticky top-0 bg-black"
+              className="sticky top-0 border rounded-[10px] bg-black"
               style={{
                 paddingTop: `${(index + 1) * CARD_TOP_PADDING}em`,
                 zIndex: index + 1, // <-- This makes each next card appear in front

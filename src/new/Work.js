@@ -19,11 +19,6 @@ const Work = () => {
         <Trust />
         <HeroSection />
         <Footer />
-
-       
-
-
-
         </>
     )
 };
