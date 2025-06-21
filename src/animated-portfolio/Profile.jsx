@@ -1,6 +1,7 @@
 import React from "react";
 import DynamicTimestamp from "../components/ui/DynamicTimeStamp";
-import logo1 from "../assets/logo1.png"; // Adjust the path as necessary
+import sklassics_logo from "../assets/sklassics_logo.jpg"; // Import your logo image
+ // Adjust the path as necessary
 const AboutCompany = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans px-6 py-10 relative">
@@ -76,9 +77,9 @@ innovation,</span> and <span className="text-white font-bold"> community engagem
           <div className="flex-1 flex justify-center  relative">
             <div className="rounded-full  bg-white p-4 w-64 h-64 flex items-center justify-center shadow-[0_0_30px_rgba(168,85,247,0.6)]">
               <img
-                src={logo1}
+                src={sklassics_logo}
                 alt="Sklassics Technologies"
-                className="w-56 h-56 object-contain rounded-full"
+                className="w- h-56 object-contain rounded-full"
               />
               <div className="absolute bottom-4 right-4 bg-black border border-purple-500 text-xs px-4 py-1 rounded-full text-white flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-green-500"></span>

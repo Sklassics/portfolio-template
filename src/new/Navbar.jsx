@@ -49,7 +49,7 @@ const RadialMenu = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-[100] text-white">
+    <div className="fixed top-4  right-5 z-[100] text-white">
       {/* Menu button */}
       <motion.div
         className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] rounded-full border border-[#6b21a8]/60 flex items-center justify-center"
@@ -148,52 +148,52 @@ const RadialMenu = () => {
   );
 };
 
-// Carousel component
-function Carousel() {
+// Full-screen Carousel component
+function FullScreenCarousel() {
   const [current, setCurrent] = React.useState(0);
+
+  // Auto-advance images every 4 seconds
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((c) => (c === projectImages.length - 1 ? 0 : c + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const prev = () => setCurrent((c) => (c === 0 ? projectImages.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === projectImages.length - 1 ? 0 : c + 1));
 
   return (
-    <div className="relative w-full mx-auto mt-12" id="carousel">
-      <div className="overflow-hidden rounded-none md:rounded-3xl shadow-2xl border-0 md:border-4 border-purple-700 bg-[#1a1333] relative w-full">
-        <img
-          src={projectImages[current].src}
-          alt={projectImages[current].title}
-          className="w-full h-[18rem] md:h-[28rem] object-cover transition-all duration-500"
-        />
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#5c2d91]/90 to-transparent px-4 md:px-8 py-4 md:py-6">
-          <h3 className="text-xl md:text-3xl font-bold text-white drop-shadow">{projectImages[current].title}</h3>
+    <section
+      id="carousel"
+      className="relative w-full h-screen flex items-center  border-fuchsia-600 justify-center bg-[#1a1333] overflow-hidden touch-pan-y"
+      style={{ overscrollBehaviorX: "none" }}
+    >
+      <img
+        src={projectImages[current].src}
+        alt={projectImages[current].title}
+        className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-500 z-0"
+        style={{ filter: "brightness(0.7)" }}
+      />
+      <div className="relative z-10 flex pt-60 flex-col items-center justify-center w-full h-full">
+        <h3 className="text-3xl md:text-5xl font-bold text-white drop-shadow mb-6 bg-black/40 px-8 py-4 rounded-2xl">
+          {projectImages[current].title}
+        </h3>
+        <div className="flex justify-center gap-3 mt-8">
+          {projectImages.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`w-4 h-4 rounded-full border-2 border-purple-400 ${
+                idx === current ? "bg-purple-400" : "bg-purple-900"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
-      <button
-        onClick={prev}
-        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-purple-700/90 hover:bg-purple-800 text-white rounded-full p-3 md:p-4 shadow-lg transition text-xl md:text-2xl"
-        aria-label="Previous"
-        style={{ zIndex: 2 }}
-      >
-        &#8592;
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-purple-700/90 hover:bg-purple-800 text-white rounded-full p-3 md:p-4 shadow-lg transition text-xl md:text-2xl"
-        aria-label="Next"
-        style={{ zIndex: 2 }}
-      >
-        &#8594;
-      </button>
-      <div className="flex justify-center gap-3 mt-6">
-        {projectImages.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrent(idx)}
-            className={`w-3 h-3 md:w-4 md:h-4 rounded-full border-2 border-purple-400 ${idx === current ? "bg-purple-400" : "bg-purple-900"}`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
-    </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1a1333] via-transparent to-[#1a1333]/60 pointer-events-none" />
+    </section>
   );
 }
 
@@ -209,10 +209,8 @@ export default function LandingPage() {
         {/* Radial Menu */}
         <RadialMenu />
 
-        {/* Main Section with Carousel */}
-        <main className="z-10 relative flex flex-col items-center justify-center text-center px-0 md:px-20 pt-12 pb-28 w-full">
-          <Carousel />
-        </main>
+        {/* Full Screen Carousel */}
+        <FullScreenCarousel />
       </div>
     </>
   );

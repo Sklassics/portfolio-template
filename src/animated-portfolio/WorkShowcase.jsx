@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-
+import ai_inter from "../assets/ai_inter.gif";
+import car from "../assets/car.gif"; // Assuming you have this image in your assets
 const works = [
   {
     id: 1,
-    image: "https://media.licdn.com/dms/image/v2/D4D12AQHNZcLIb10_LQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1715255563562?e=2147483647&v=beta&t=wF_BP--MC_hm81u2eNeYCIvGIhyUFFSi_VuReD1oPVk",
+    image: ai_inter,
     hoverText: "AI Interview Panel uses NLP and machine learning to evaluate answers, provide insights, and mimic human-like interviews across various domains.",
   },
   {
     id: 2,
-    image: "https://images.pexels.com/photos/3457780/pexels-photo-3457780.jpeg?auto=compress&cs=tinysrgb&w=600",
+    image: car,
     hoverText: "Hanuman Car Rental is a full-fledged car booking solution that streamlines both customer and admin experiences.",
   },
   {
@@ -129,7 +130,7 @@ const WorkShowcase = () => {
             <img
               src={prevCard.image}
               alt=""
-              className="w-full h-full object-cover rounded-xl"
+              className="object-contain w-full h-full rounded-xl bg-black"
               draggable={false}
               style={{ filter: "blur(2px)" }}
             />
@@ -180,7 +181,7 @@ const WorkShowcase = () => {
             <img
               src={nextCard.image}
               alt=""
-              className="w-full h-full object-cover rounded-xl"
+              className="object-contain w-full h-full rounded-xl bg-black"
               draggable={false}
               style={{ filter: "blur(2px)" }}
             />

@@ -13,6 +13,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* overflow-x: hidden; */
 }
 
 body {
@@ -36,3 +37,14 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 } 
+@layer utilities {
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+}
