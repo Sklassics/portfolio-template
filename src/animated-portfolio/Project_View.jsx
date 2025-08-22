@@ -171,7 +171,7 @@ const styles = `
   /* ===== ADVANCED CTA (reused for cards) ===== */
   .cta{
     position:relative; display:inline-flex; align-items:center; gap:10px;
-    padding:10px 16px; border-radius:999px; color:#ede8ff; text-decoration:none;
+    padding:8px 16px; border-radius:999px; color:#ede8ff; text-decoration:none;
     background:#0c0c12; border:1px solid var(--border);
     transition: box-shadow .25s ease, transform .15s ease, border-color .25s ease;
     isolation:isolate;
@@ -258,52 +258,52 @@ const SERVICES = [
   { kicker:"TUTORS", title:"Expert Tutors",
     headline:"One-on-One Guidance: Learn with the Best Tutors",
     desc:"Personalized learning support for students across all grades and subjects.",
-    brand:"EduTeam", year:"2025", cta:"Get a Tutor", link:"https://sklassicstutor.com",
+    brand:"EduTeam", year:"", cta:"Get a Tutor", link:"https://sklassicstutor.com",
     status:"INITIATE EDU•360", icon:"cap" },
   { kicker:"OUR SERVICES • HANUMANCAR", title:"Premium Car Rentals",
     headline:"Ride with Confidence: HanumanCar Rental Services",
     desc:"We provide reliable and affordable car rental services across your city, 24/7.",
-    brand:"HanumanCar", year:"2025", cta:"Book Now", link:"https://hanumancars.com",
+    brand:"HanumanCar", year:"", cta:"Book Now", link:"https://hanumancars.com",
     status:"INITIATE DRIVE", icon:"car" },
   { kicker:"TRAINING • CAREERS", title:"IT Training & Placements",
     headline:"Empower Your Future with IT Training & Job Assistance",
     desc:"Hands-on courses and real-world projects to boost your IT career.",
-    brand:"Sklassics", year:"2025", cta:"Explore Programs", link:"https://sklassics.com",
+    brand:"Sklassics", year:"", cta:"Explore Programs", link:"https://sklassics.com",
     status:"INITIATE LEARN", icon:"cap" },
   { kicker:"DIGITAL • SOLUTIONS", title:"IT Services",
     headline:"End-to-End IT Services for Your Business",
     desc:"From cloud to custom applications—we deliver scalable IT solutions.",
-    brand:"SklassicsTech", year:"2025", cta:"Get Services", link:"https://sklassicstech.com",
+    brand:"SklassicsTech", year:"", cta:"Get Services", link:"https://sklassicstech.com",
     status:"INITIATE TECH", icon:"laptop" },
   { kicker:"LEARNING • PLATFORM", title:"Learning Management System",
     headline:"Sklassics LMS: Simplify Online Learning",
     desc:"Smart, flexible and interactive learning management system for institutions.",
-    brand:"Sklassics LMS", year:"2025", cta:"Launch LMS", link:"https://sklassics-lms.com",
+    brand:"Sklassics LMS", year:"", cta:"Launch LMS", link:"https://sklassics-lms.com",
     status:"INITIATE LMS", icon:"users" },
   { kicker:"AI • CAREERS", title:"AI Interview Platform",
     headline:"Boost Your Confidence with AI-Powered Mock Interviews",
     desc:"AI-driven insights to prepare for real-world interviews.",
-    brand:"SklassicsAI", year:"2025", cta:"Try AI Interview", link:"https://sklassicsai.com",
+    brand:"SklassicsAI", year:"", cta:"Try AI Interview", link:"https://sklassicsai.com",
     status:"INITIATE AI", icon:"cpu" },
   { kicker:"QUIZ • LEARN", title:"Quiz & Test Application",
     headline:"Interactive Quizzes and Tests for Continuous Learning",
     desc:"Assess knowledge, track progress, and learn better.",
-    brand:"Sklassics Academy", year:"2025", cta:"Start Quiz", link:"https://sklassicsacademy.com",
+    brand:"Sklassics Academy", year:"", cta:"Start Quiz", link:"https://sklassicsacademy.com",
     status:"INITIATE QUIZ", icon:"quiz" },
   { kicker:"FINTECH • APPS", title:"Loan Application",
     headline:"Sklassics Loan App: Simplify Your Loan Journey",
     desc:"Fast, secure, and transparent loan processing at your fingertips.",
-    brand:"Sklassics Loan", year:"2025", cta:"Apply Loan", link:"https://sklassics-loan.com",
+    brand:"Sklassics Loan", year:"", cta:"Apply Loan", link:"https://sklassics-loan.com",
     status:"INITIATE LOAN", icon:"doc" },
   { kicker:"COMMERCE • DIGITAL", title:"E-Commerce Application",
     headline:"Your Online Storefront with Sklassics E-Commerce",
     desc:"Launch your e-commerce platform quickly and grow your business.",
-    brand:"Sklassics E-Commerce", year:"2025", cta:"Shop Now", link:"https://sklassics-ecommerce.com",
+    brand:"Sklassics E-Commerce", year:"", cta:"Shop Now", link:"https://sklassics-ecommerce.com",
     status:"INITIATE SHOP", icon:"cart" },
   { kicker:"REAL ESTATE • DIGITAL", title:"Real Estate Application",
     headline:"VLRWS Real Estate App: Smarter Property Solutions",
     desc:"Discover, buy, and rent properties with ease.",
-    brand:"VLRWS", year:"2025", cta:"Explore Properties", link:"https://vlrws.com",
+    brand:"VLRWS", year:"", cta:"Explore Properties", link:"https://vlrws.com",
     status:"INITIATE ESTATE", icon:"building" },
 ];
 
@@ -341,9 +341,9 @@ const designDescs = [
 
 // ✅ Add unique links for each design
 const designLinks = [
-  "hanumancars.com",
-  "sklassics-lms.com",
-  "sklassics.com",
+  "https://hanumancars.com",
+  "https://sklassics-lms.com",
+  "https://sklassics.com",
   "https://ticky5.netlify.app/",
   "https://sklassicsfinance.netlify.app/",
   "https://sklassicsportfolio1.netlify.app/",
@@ -521,7 +521,7 @@ export default function ProjectViewNew() {
                 <p className="svc-desc">{s.desc}</p>
                 <div className="svc-meta">
                   <span>{s.brand}</span>
-                  <span>•</span>
+                  <span></span>
                   <span>{s.year}</span>
                 </div>
                 <a className="cta" href={s.link} target="_blank" rel="noreferrer">
