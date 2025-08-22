@@ -129,15 +129,15 @@ const Footer = () => {
   ];
 
   const domains = [
-    { name: "sklassics.com", icon: Globe, color: "yellow" },
-    { name: "sklassicstech.com", icon: Code, color: "blue" },
-    { name: "sklassicsacademy.com", icon: BookOpen, color: "purple" },
-    { name: "sklassics-lms.com", icon: Target, color: "cyan" },
-    { name: "sklassics-ai.com", icon: Zap, color: "pink" },
-    { name: "sklassicstutor.com", icon: Users, color: "green" },
-    { name: "sklassics-quiz.com", icon: Star, color: "yellow" },
-    { name: "hanumancars.com", icon: Car, color: "blue" },
-    { name: "vlrws.com", icon: Building, color: "purple" },
+    { name: "sklassics.com", url: "https://sklassics.com", icon: Globe, color: "yellow" },
+    { name: "sklassicstech.com", url: "https://sklassicstech.com", icon: Code, color: "blue" },
+    { name: "sklassicsacademy.com", url: "https://sklassicsacademy.com", icon: BookOpen, color: "purple" },
+    { name: "sklassics-lms.com",  url: "https://sklassics-lms.com", icon: Target, color: "cyan" },
+    { name: "sklassics-ai.com", url: "https://sklassics-ai.com", icon: Zap, color: "pink" },
+    { name: "sklassicstutor.com",  url: "https://sklassicstutor.com", icon: Users, color: "green" },
+    { name: "sklassics-quiz.com", url: "https://sklassics-quiz.com", icon: Star, color: "yellow" },
+    { name: "hanumancars.com", url: "https://hanumancars.com",  icon: Car, color: "blue" },
+    { name: "vlrws.com", url: "https://vlrws.com",  icon: Building, color: "purple" },
   ];
 
   const contactInfo = [
@@ -316,35 +316,39 @@ const Footer = () => {
             
             <div className="grid gap-4">
               {domains.map((domain, index) => (
-                <motion.div
-                  key={domain.name}
-                  className="group flex items-center gap-3 p-4 rounded-xl bg-dark-800/30 backdrop-blur-sm border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover:shadow-glow-purple"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                  whileHover={{ 
-                    scale: 1.02, 
-                    y: -2,
-                    backgroundColor: "rgba(59, 130, 246, 0.1)",
-                  }}
-                >
-                  <motion.div 
-                    className={`p-2 rounded-full bg-${domain.color}-500/20 border border-${domain.color}-500/30`}
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                  >
-                    <domain.icon className={`w-5 h-5 text-${domain.color}-400`} />
-                  </motion.div>
-                  <span className="text-gray-200 font-medium group-hover:text-white transition-colors">
-                    {domain.name}
-                  </span>
-                  <motion.div
-                    className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
-                    whileHover={{ x: 3 }}
-                  >
-                    <ArrowRight className="w-4 h-4 text-blue-400" />
-                  </motion.div>
-                </motion.div>
-              ))}
+    <motion.a
+    key={domain.name}
+    href={domain.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Open ${domain.name}`}
+    className="group flex items-center gap-3 p-4 rounded-xl bg-dark-800/30 backdrop-blur-sm border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover:shadow-glow-purple"
+    initial={{ opacity: 0, y: 30 }}
+    animate={isVisible ? { opacity: 1, y: 0 } : {}}
+    transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+    whileHover={{ 
+      scale: 1.02, 
+      y: -2,
+      backgroundColor: "rgba(59, 130, 246, 0.1)",
+    }}
+  >
+    <motion.div 
+      className={`p-2 rounded-full bg-${domain.color}-500/20 border border-${domain.color}-500/30`}
+      whileHover={{ scale: 1.1, rotate: -5 }}
+    >
+      <domain.icon className={`w-5 h-5 text-${domain.color}-400`} />
+    </motion.div>
+    <span className="text-gray-200 font-medium group-hover:text-white transition-colors">
+      {domain.name}
+    </span>
+    <motion.div
+      className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+      whileHover={{ x: 3 }}
+    >
+      <ArrowRight className="w-4 h-4 text-blue-400" />
+    </motion.div>
+  </motion.a>
+  ))}
             </div>
           </motion.section>
 
